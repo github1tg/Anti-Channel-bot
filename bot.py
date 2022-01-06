@@ -87,7 +87,7 @@ async def main_handler(bot, message):
 @JV_BOT.on_message(filters.command(["start"]) & filters.private)
 async def start_handler(bot, message):
          chat_id=m.chat.id,
-                           photo="https://i.ibb.co/NKXgXD4/vlmnwosn-0.png"
+   await message.reply_photo(photo="https://i.ibb.co/NKXgXD4/vlmnwosn-0.png"),
    await message.reply_text(text="""Hey! Just add me to the chat, and I will block the channels that write to the chat,
 
 check /help for more.""",
