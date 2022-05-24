@@ -73,7 +73,7 @@ async def main_handler(bot, message):
     if (await whitelist_check(chat_id, a_id)):
         return
     try:
-        res = await bot.kick_chat_member(chat_id, a_id)
+        res = await bot.ban_chat_member(chat_id, a_id)
     except:
         return await message.reply_text("Promote me as admin, to use me")
     if res:
@@ -86,9 +86,7 @@ async def main_handler(bot, message):
 
 @JV_BOT.on_message(filters.command(["start"]) & filters.private)
 async def start_handler(bot, message):
-         chat_id=m.chat.id,
-   await message.reply_photo(photo="https://i.ibb.co/NKXgXD4/vlmnwosn-0.png"),
-   await message.reply_text(text="""Hey! Just add me to the chat, and I will block the channels that write to the chat,
+    await message.reply_text(text="""Hey! Just add me to the chat, and I will block the channels that write to the chat,
 
 check /help for more.""",
                              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Bots Channel", url=f"https://t.me/Universal_Projects"),
@@ -144,7 +142,7 @@ async def cban_handler(bot, message):
         if (await whitelist_check(chat_id, a_id)):
             return await message.reply_text("Channel Id found in whitelist, so you can't ban this channel")
         await bot.resolve_peer(a_id)
-        res = await bot.kick_chat_member(chat_id, a_id)
+        res = await bot.ban_chat_member(chat_id, a_id)
         chat_data = await bot.get_chat(a_id)
         mention = f"@{chat_data.username}" if chat_data.username else chat_data.title
         if res:
